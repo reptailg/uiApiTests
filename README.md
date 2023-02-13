@@ -4,6 +4,6 @@ So far it only contains a user interface test, but I will plan to add API tests 
 
 ## Description
 Stack:
-Java 17
-TestNg
+Java 17,
+TestNg,
 Gradle
