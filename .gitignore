@@ -3,3 +3,6 @@
 /build/
 /build/classes/java/main/
 /build/classes/java/test/
+/.idea/
+/gradle/wrapper/gradle-wrapper.jar
+/gradle/wrapper/gradle-wrapper.properties
