@@ -5,13 +5,14 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
 import static com.codeborne.selenide.Selenide.*;
-import static properties.BaseProperties.log;
 
 public class SearchResultPage {
 
     private final WebElement search = $("#uniq16733372597981");
     private final WebElement btnSearch = $x("//button[@class = 'websearch-button mini-suggest__button']");
     private final WebElement oneBox = $("#f11jnc6b-OP6HxZC");
+
+    private static final String SEARCH_VALUE = "Английский Русский";
 
 
     @Step("Set search value")
@@ -22,11 +23,7 @@ public class SearchResultPage {
 
     @Step("Search via button")
     public SearchResultPage searchViaButton(){
-        if (!search.getText().equals("")){
-            btnSearch.click();
-        }else{
-            log.info("Empty search value");
-        }
+        btnSearch.click();
         return this;
     }
     @Step("Check One-Box is display")
@@ -37,7 +34,12 @@ public class SearchResultPage {
     @Step("Check One-Box languages")
     public void checkOneBoxLanguages(){
         Assert.assertTrue(
-                $$x("//span[@class = 'Button2-Text']").stream()
-                        .allMatch(x-> x.toString().contains("Английский Русский")));
+                $$x("//div[@class='Translate-Controls']//span[@class = 'Button2-Text']").stream()
+                        .allMatch(x-> SEARCH_VALUE.contains(x.getText())));
+    }
+
+    @Step("Get n element SERP link")
+    public String getSerpElementLink(int n){
+        return $x("//li[@data-cid='"+ n + "']//a[@accesskey ='"+ (n + 1) +"']").getAttribute("href");
     }
 }

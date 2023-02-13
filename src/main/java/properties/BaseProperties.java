@@ -14,7 +14,7 @@ public class BaseProperties {
         try(FileInputStream fis = new FileInputStream("src/test/resources/config.properties")) {
             property.load(fis);
         } catch (IOException e) {
-            log.info("ОШИБКА: Файл свойств отсуствует!");
+            log.info("ERROR: no property file");
         }
         return property.getProperty(key);
     }
