@@ -6,12 +6,17 @@ import java.util.logging.Logger;
 
 
 public class BaseProperties {
-    public static Logger log = Logger.getLogger(BaseProperties.class.getName());
+
+    private BaseProperties() {
+        throw new IllegalStateException("Property class");
+    }
+    public static final Logger log = Logger.getLogger(BaseProperties.class.getName());
 
     public static String getProperty(String key){
 
         Properties property = new Properties();
-        try(FileInputStream fis = new FileInputStream("src/test/resources/config.properties")) {
+        try(FileInputStream fis = new FileInputStream("src" + File.separator + "test" + File.separator +
+                "resources" + File.separator + "config.properties")) {
             property.load(fis);
         } catch (IOException e) {
             log.info("ERROR: no property file");
