@@ -7,3 +7,4 @@ Stack:
 Java 17,
 TestNg,
 Gradle
+Selenide
