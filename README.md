@@ -6,5 +6,5 @@ So far it only contains a user interface test and allure reports, but I will pla
 Stack:
 Java 17,
 TestNg,
-Gradle
+Gradle,
 Selenide
